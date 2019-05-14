@@ -1,0 +1,50 @@
+#!/bin/sh
+# prerm script for tezos
+#
+# see: dh_installdeb(1)
+
+set -e
+
+# summary of how this script can be called:
+#        * <prerm> `remove'
+#        * <old-prerm> `upgrade' <new-version>
+#        * <new-prerm> `failed-upgrade' <old-version>
+#        * <conflictor's-prerm> `remove' `in-favour' <package> <new-version>
+#        * <deconfigured's-prerm> `deconfigure' `in-favour'
+#          <package-being-installed> <version> `removing'
+#          <conflicting-package> <version>
+# for details, see https://www.debian.org/doc/debian-policy/ or
+# the debian-policy package
+
+if [ -d /run/systemd/system ]; then
+    deb-systemd-invoke stop tezos-accuser-003-PsddFKi3.service > /dev/null
+    deb-systemd-invoke stop tezos-accuser-004-Pt24m4xi.service > /dev/null
+    deb-systemd-invoke stop tezos-baker-003-PsddFKi3.service > /dev/null
+    deb-systemd-invoke stop tezos-baker-004-Pt24m4xi.service > /dev/null
+    deb-systemd-invoke stop tezos-endorser-003-PsddFKi3.service > /dev/null
+    deb-systemd-invoke stop tezos-endorser-004-Pt24m4xi.service > /dev/null
+    deb-systemd-invoke stop tezos-node.service > /dev/null
+
+    systemctl disable tezos-accuser-003-PsddFKi3.service > /dev/null
+    systemctl disable tezos-accuser-004-Pt24m4xi.service > /dev/null
+    systemctl disable tezos-baker-003-PsddFKi3.service > /dev/null
+    systemctl disable tezos-baker-004-Pt24m4xi.service > /dev/null
+    systemctl disable tezos-endorser-003-PsddFKi3.service > /dev/null
+    systemctl disable tezos-endorser-004-Pt24m4xi.service > /dev/null
+    systemctl disable tezos-node.service > /dev/null
+fi
+
+case "$1" in
+    remove|upgrade|deconfigure)
+    ;;
+
+    failed-upgrade)
+    ;;
+
+    *)
+        echo "prerm called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+exit 0

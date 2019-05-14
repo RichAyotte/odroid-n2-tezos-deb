@@ -1,0 +1,62 @@
+#!/bin/sh
+# postinst script for tezos
+#
+# see: dh_installdeb(1)
+
+set -e
+
+# summary of how this script can be called:
+#        * <postinst> `configure' <most-recently-configured-version>
+#        * <old-postinst> `abort-upgrade' <new version>
+#        * <conflictor's-postinst> `abort-remove' `in-favour' <package>
+#          <new-version>
+#        * <postinst> `abort-remove'
+#        * <deconfigured's-postinst> `abort-deconfigure' `in-favour'
+#          <failed-install-package> <version> `removing'
+#          <conflicting-package> <version>
+# for details, see https://www.debian.org/doc/debian-policy/ or
+# the debian-policy package
+
+
+case "$1" in
+    configure)
+        mkdir -p /var/lib/tezos
+        addgroup --system --quiet tezos
+        adduser --system --quiet --ingroup tezos --no-create-home --home /var/lib/tezos tezos
+        adduser --quiet tezos plugdev
+        chown -R tezos /var/lib/tezos
+        service procps start
+        udevadm trigger
+        udevadm control --reload-rules
+    ;;
+
+    abort-upgrade|abort-remove|abort-deconfigure)
+    ;;
+
+    *)
+        echo "postinst called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+if [ -d /run/systemd/system ]; then
+    systemctl --system daemon-reload >/dev/null
+    systemctl enable tezos-node.service > /dev/null
+    systemctl enable tezos-accuser-003-PsddFKi3.service > /dev/null
+    systemctl enable tezos-accuser-004-Pt24m4xi.service > /dev/null
+    systemctl enable tezos-baker-003-PsddFKi3.service > /dev/null
+    systemctl enable tezos-baker-004-Pt24m4xi.service > /dev/null
+    systemctl enable tezos-endorser-003-PsddFKi3.service > /dev/null
+    systemctl enable tezos-endorser-004-Pt24m4xi.service > /dev/null
+
+    deb-systemd-invoke start tezos-node.service > /dev/null
+    deb-systemd-invoke start tezos-accuser-003-PsddFKi3.service > /dev/null
+    deb-systemd-invoke start tezos-accuser-004-Pt24m4xi.service > /dev/null
+    deb-systemd-invoke start tezos-baker-003-PsddFKi3.service > /dev/null
+    deb-systemd-invoke start tezos-baker-004-Pt24m4xi.service > /dev/null
+    deb-systemd-invoke start tezos-endorser-003-PsddFKi3.service > /dev/null
+    deb-systemd-invoke start tezos-endorser-004-Pt24m4xi.service > /dev/null
+fi
+
+exit 0
+

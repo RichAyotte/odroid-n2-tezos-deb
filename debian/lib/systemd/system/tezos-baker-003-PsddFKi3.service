@@ -1,0 +1,20 @@
+# tezos-baker-003-PsddFKi3
+
+[Unit]
+After = tezos-node.service
+BindsTo = tezos-node.service
+Description = Tezos Baker
+Documentation = http://tezos.gitlab.io/mainnet/
+Wants = network-online.target
+
+[Service]
+ExecStart = /usr/bin/tezos-baker-003-PsddFKi3 run with local node /var/lib/tezos/.tezos-node ledger --minimal-fees 0.001
+ExecStartPre = /bin/sleep 5
+Group = tezos
+Restart = on-failure
+RestartSec = 60
+User = tezos
+WorkingDirectory= /var/lib/tezos/
+
+[Install]
+WantedBy = tezos-node.service

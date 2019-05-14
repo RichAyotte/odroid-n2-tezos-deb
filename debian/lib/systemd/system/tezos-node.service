@@ -1,0 +1,19 @@
+# Tezos node
+
+[Unit]
+After = network-online.target
+Description = Tezos Node
+Documentation = http://tezos.gitlab.io/mainnet/
+Wants = network-online.target
+
+[Service]
+ExecStart = /usr/bin/tezos-node run
+Group = tezos
+Restart = on-failure
+RestartSec = 60
+User = tezos
+WorkingDirectory = /var/lib/tezos/
+
+[Install]
+RequiredBy = tezos-baker.service tezos-endorser.service tezos-accuser.service
+WantedBy = multi-user.target

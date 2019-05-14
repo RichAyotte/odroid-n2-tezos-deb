@@ -1,0 +1,13 @@
+Package: tezos
+Version: 4.0-3
+Section: Utilities
+Priority: optional
+Architecture: arm64
+Depends: libc6, libev4, libgmp10, libhidapi-libusb0, libusb-1.0-0, libudev1
+Maintainer: Richard Ayotte <rich@ayottesoftware.com>
+Homepage: https://ayottesoftware.com
+Description: Tezos
+ Tezos is a blockchain that can evolve by upgrading itself. Stakeholders vote on
+ amendments to the protocol, including amendments to the voting procedure itself,
+ to reach social consensus on proposals. Tezos supports smart contracts and
+ offers a platform to build decentralized applications.
