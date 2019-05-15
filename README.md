@@ -1,4 +1,4 @@
-# ODROID N2 Debian Package
+# ODROID N2 Tezos Debian Package
 
 Baking on less 5W
 
