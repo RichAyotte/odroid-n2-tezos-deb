@@ -14,10 +14,6 @@ Contributions are welcome.
 
 * **Richard Ayotte** - [Ayotte Software](https://ayottesoftware.com)
 
-#### Donations
-
-- tz1R4PuhxUxBBZhfLJDx2nNjbr7WorAPX1oC
-
 ## Credits
 
 - https://gitlab.com/tezos/tezos
