@@ -17,21 +17,15 @@ set -e
 # the debian-policy package
 
 if [ -d /run/systemd/system ]; then
-    deb-systemd-invoke stop tezos-accuser-003-PsddFKi3.service > /dev/null
-    deb-systemd-invoke stop tezos-accuser-004-Pt24m4xi.service > /dev/null
-    deb-systemd-invoke stop tezos-baker-003-PsddFKi3.service > /dev/null
-    deb-systemd-invoke stop tezos-baker-004-Pt24m4xi.service > /dev/null
-    deb-systemd-invoke stop tezos-endorser-003-PsddFKi3.service > /dev/null
-    deb-systemd-invoke stop tezos-endorser-004-Pt24m4xi.service > /dev/null
-    deb-systemd-invoke stop tezos-node.service > /dev/null
+    deb-systemd-invoke stop tezos-accuser-005-PsBabyM1.service &> /dev/null
+    deb-systemd-invoke stop tezos-baker-005-PsBabyM1.service &> /dev/null
+    deb-systemd-invoke stop tezos-endorser-005-PsBabyM1.service &> /dev/null
+    deb-systemd-invoke stop tezos-node.service &> /dev/null
 
-    systemctl disable tezos-accuser-003-PsddFKi3.service > /dev/null
-    systemctl disable tezos-accuser-004-Pt24m4xi.service > /dev/null
-    systemctl disable tezos-baker-003-PsddFKi3.service > /dev/null
-    systemctl disable tezos-baker-004-Pt24m4xi.service > /dev/null
-    systemctl disable tezos-endorser-003-PsddFKi3.service > /dev/null
-    systemctl disable tezos-endorser-004-Pt24m4xi.service > /dev/null
-    systemctl disable tezos-node.service > /dev/null
+    deb-systemd-invoke disable tezos-accuser-005-PsBabyM1.service &> /dev/null
+    deb-systemd-invoke disable tezos-baker-005-PsBabyM1.service &> /dev/null
+    deb-systemd-invoke disable tezos-endorser-005-PsBabyM1.service &> /dev/null
+    deb-systemd-invoke disable tezos-node.service &> /dev/null
 fi
 
 case "$1" in

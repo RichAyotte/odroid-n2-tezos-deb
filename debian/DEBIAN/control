@@ -1,5 +1,5 @@
 Package: tezos
-Version: 4.0-3
+Version: 5.0-5
 Section: Utilities
 Priority: optional
 Architecture: arm64
