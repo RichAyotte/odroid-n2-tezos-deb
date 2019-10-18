@@ -1,4 +1,4 @@
-# ODROID N2 Debian Package
+# ODROID N2 Tezos Debian Package
 
 Baking on less 5W
 
@@ -13,10 +13,6 @@ Contributions are welcome.
 ## Authors
 
 * **Richard Ayotte** - [Ayotte Software](https://ayottesoftware.com)
-
-#### Donations
-
-- tz1R4PuhxUxBBZhfLJDx2nNjbr7WorAPX1oC
 
 ## Credits
 
