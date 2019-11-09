@@ -1,6 +1,10 @@
 # ODROID N2 Tezos Debian Package
 
-Baking on less 5W
+Baking on less than 5W
+
+## Building
+
+`dpkg-deb --build debian/`
 
 ## Installing
 
