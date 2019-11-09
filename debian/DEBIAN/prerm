@@ -22,10 +22,10 @@ if [ -d /run/systemd/system ]; then
     deb-systemd-invoke stop tezos-endorser-005-PsBabyM1.service &> /dev/null
     deb-systemd-invoke stop tezos-node.service &> /dev/null
 
-    deb-systemd-invoke disable tezos-accuser-005-PsBabyM1.service &> /dev/null
-    deb-systemd-invoke disable tezos-baker-005-PsBabyM1.service &> /dev/null
-    deb-systemd-invoke disable tezos-endorser-005-PsBabyM1.service &> /dev/null
-    deb-systemd-invoke disable tezos-node.service &> /dev/null
+    systemctl disable tezos-accuser-005-PsBabyM1.service &> /dev/null
+    systemctl disable tezos-baker-005-PsBabyM1.service &> /dev/null
+    systemctl disable tezos-endorser-005-PsBabyM1.service &> /dev/null
+    systemctl disable tezos-node.service &> /dev/null
 fi
 
 case "$1" in
