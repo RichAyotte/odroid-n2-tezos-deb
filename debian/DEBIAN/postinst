@@ -45,12 +45,18 @@ if [ -d /run/systemd/system ]; then
     systemctl enable tezos-accuser-005-PsBabyM1.service &> /dev/null
     systemctl enable tezos-baker-005-PsBabyM1.service &> /dev/null
     systemctl enable tezos-endorser-005-PsBabyM1.service &> /dev/null
+    systemctl enable tezos-accuser-006-PsCARTHA.service &> /dev/null
+    systemctl enable tezos-baker-006-PsCARTHA.service &> /dev/null
+    systemctl enable tezos-endorser-006-PsCARTHA.service &> /dev/null
     systemctl daemon-reload
 
     deb-systemd-invoke start tezos-node.service &> /dev/null
     deb-systemd-invoke start tezos-accuser-005-PsBabyM1.service &> /dev/null
     deb-systemd-invoke start tezos-baker-005-PsBabyM1.service &> /dev/null
     deb-systemd-invoke start tezos-endorser-005-PsBabyM1.service &> /dev/null
+    deb-systemd-invoke start tezos-accuser-006-PsCARTHA.service &> /dev/null
+    deb-systemd-invoke start tezos-baker-006-PsCARTHA.service &> /dev/null
+    deb-systemd-invoke start tezos-endorser-006-PsCARTHA.service &> /dev/null
 fi
 
 exit 0
